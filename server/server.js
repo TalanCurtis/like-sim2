@@ -17,12 +17,15 @@ app.use(bodyParser.json())
 
 // Controller Imports
 const test_controller = require('./controllers/test_controller')
-
+const auth_controller = require('./controllers/auth_controller')
 // EndPoints
 //// Test
 app.get('/api/test', test_controller.testGet)
 app.get('/api/testDB', test_controller.testGetDB)
 app.get('/api/testDB/age', test_controller.testGetAgeGreaterThan)
+app.post('/api/testDB', test_controller.testGetUser)
+//// Auth
+app.post('/api/login', auth_controller.login)
 
 // Set server to listen
 const port = process.env.SERVER_PORT
